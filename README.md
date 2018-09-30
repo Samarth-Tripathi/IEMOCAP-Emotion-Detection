@@ -1,4 +1,10 @@
 # IEMOCAP-Emotion-Detection
+
+https://arxiv.org/abs/1804.05788 
+Please cite this if you use the code
+
+
+
 Multi-modal Emotion detection from IEMOCAP on Speech, Text, Motion-Capture Data using Neural Nets.
 
 
