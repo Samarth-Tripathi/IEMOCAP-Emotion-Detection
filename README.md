@@ -21,16 +21,16 @@ Please refer to the pdf and ppt for more details.
 
 ## Recent Changes
 
-We have added Hyperparameter Optimization (HPO) on our project using Auptimizer - https://github.com/LGE-ARC-AdvancedAI/auptimizer
-All the previous experiments have been moved to the Experiment folder.
-To get the final best model run mocal_data_collect.py first on IEMOCAP data.
-Then run python combined.py 19.json or python combined.py 29.json
+We have added Hyperparameter Optimization (HPO) on our project using Auptimizer - https://github.com/LGE-ARC-AdvancedAI/auptimizer . <br>
+All the previous experiments have been moved to the Experiment folder. <br>
+To get the final best model run mocal_data_collect.py first on IEMOCAP data. <br>
+Then run python combined.py 19.json or python combined.py 29.json <br>
 
-To perform your own HPO - 
-To get the final best model run mocal_data_collect.py first on IEMOCAP data.
-Then install and setup Auptimizer (refer to the documentation)
-Edit exp.json
-Then run python -m aup exp.json --log info
-Then run python combined.py <best_configuration_from_above>
+To perform your own HPO -  <br>
+To get the final best model run mocal_data_collect.py first on IEMOCAP data. <br>
+Then install and setup Auptimizer (refer to the documentation) <br>
+Edit exp.json <br>
+Then run python -m aup exp.json --log info <br>
+Then run python combined.py <best_configuration_from_above> <br>
 
-Note always perform HPO on a validation set, then translate that to test dataset.
+Note always perform HPO on a validation set, then translate that to test dataset. <br>
