@@ -24,6 +24,27 @@ def split_wav(wav, emotions):
         frames.append({'left': e['left'], 'right': e['right']})
     return frames
 
+def split_wav_time(wav, timeq = 2, overlap = 0):
+    # split wav into n samples, where each sample is of length time
+
+    (nchannels, sampwidth, framerate, nframes, comptype, compname), samples = wav
+
+    left = samples[0::nchannels]
+    right = samples[1::nchannels]
+
+    frames = []
+
+    len_wav = nframes / framerate # length of wav in seconds
+
+    for t_start in range(timeq, len_wav, timeq):
+        start = e['start']
+        end = e['end']
+
+        e['right'] = right[int(start * framerate):int(end * framerate)]
+        e['left'] = left[int(start * framerate):int(end * framerate)]
+
+        frames.append({'left': e['left'], 'right': e['right']})
+    return frames
 
 def get_field(data, key):
     return np.array([e[key] for e in data])
