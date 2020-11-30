@@ -5,7 +5,34 @@ import sys
 import numpy as np
 import pandas as pd
 import glob
+from features import stFeatureExtraction
 
+def calculate_features(frames, freq, options):
+    window_sec = 0.1
+    window_n = int(freq * window_sec)
+
+    st_f = stFeatureExtraction(frames, freq, window_n, window_n / 2)
+
+    if st_f.shape[1] > 2:
+        i0 = 1
+        i1 = st_f.shape[1] - 1
+        if i1 - i0 < 1:
+            i1 = i0 + 1
+
+        deriv_st_f = np.zeros((st_f.shape[0], i1 - i0), dtype=float)
+        for i in range(i0, i1):
+            i_left = i - 1
+            i_right = i + 1
+            deriv_st_f[:st_f.shape[0], i - i0] = st_f[:, i]
+        return deriv_st_f
+    elif st_f.shape[1] == 2:
+        deriv_st_f = np.zeros((st_f.shape[0], 1), dtype=float)
+        deriv_st_f[:st_f.shape[0], 0] = st_f[:, 0]
+        return deriv_st_f
+    else:
+        deriv_st_f = np.zeros((st_f.shape[0], 1), dtype=float)
+        deriv_st_f[:st_f.shape[0], 0] = st_f[:, 0]
+        return deriv_st_f
 
 def split_wav(wav, emotions):
     (nchannels, sampwidth, framerate, nframes, comptype, compname), samples = wav
